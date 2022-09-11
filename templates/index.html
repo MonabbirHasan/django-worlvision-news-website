@@ -1,0 +1,271 @@
+{% include 'header.html' %}
+{% comment %} <style>
+
+.container-scroller i{
+  display:flex;
+  border:1px solid #21f123;
+  border-radius:50%;
+  z-index:1;
+  animation:bull 5s linear infinite;
+}
+@keyframes bull{
+  0%{
+    transform:translateY(0px);
+  }
+90%{
+    transform:translateY(-1200%);
+     filter:hue-rotate(230deg);
+  }
+  100%{
+    transform:translateY(0%);
+   
+  }
+}
+
+
+</style> {% endcomment %}
+  <div class="container">
+    <div class="banner-top-thumb-wrap">
+      <div class="d-lg-flex justify-content-between align-items-center">
+{% for i in four_news_post %}
+   <div class="d-flex justify-content-between  mb-3 mb-lg-0">
+        <div>
+          <img
+            src="/media/{{i.p_image}}"
+            alt="thumb"
+            class="banner-top-thumb"
+          />
+        </div>
+          <a href ="/news-post/{{i.id}}">
+            <h5 class="m-0 font-weight-bold">
+              {{i.p_title | slice:":30" | safe}}
+            </h5>
+          </a>
+      </div>
+{% endfor %}
+    </div>
+  </div>
+          <div class="row">
+            <div class="col-lg-8">
+              <div class="owl-carousel owl-theme" id="main-banner-carousel">
+    {% for i in four_news_post %}
+                <div class="item">
+                  <div class="carousel-content-wrapper mb-2">
+                    <div class="carousel-content">
+                      <h1 class="font-weight-bold">
+                        <a href="#" class="text-light">{{i.p_title |slice:":30"| upper}}</a>
+                      </h1>
+                      <h5 class="font-weight-normal  m-0">{{i.p_title |slice:":30"| upper}}</h5>
+                      <p class="text-color m-0 pt-2 d-flex align-items-center">
+                        <span class="fs-10 mr-1">{{i.p_date}}</span>
+                        <i class="mdi mdi-bookmark-outline mr-3"></i>
+                        <span class="fs-10 mr-1">{{i.p_comment}}</span>
+                        <i class="mdi mdi-comment-outline"></i>
+                      </p>
+                    </div>
+                    <div class="carousel-image">
+                      <img style="width:100%; height:500px!important;" src="/media/{{i.p_image}}" alt="" />
+                    </div>
+                  </div>
+                </div>
+     {% endfor %}
+              </div>
+            </div>
+{% comment %} sidebar news  {% endcomment %}
+<div class="col-lg-4">
+{% for i in four_news_post %}
+  <div class="row">
+      <div class="col-sm-6">
+        <div class="py-3 border-bottom">
+          <div class="d-flex align-items-center pb-2">
+            <img
+              src="/media/{{i.p_image}}"
+              class="img-xs img-rounded mr-2"
+              alt="thumb"
+            />
+          {% for username in usersData %}
+            <span class="fs-12 text-muted">{{username.u_name}}</span>
+          {% endfor %}
+          </div>
+          <p class="fs-14 m-0 font-weight-medium line-height-sm">
+            <a href="single/{{i.id}}">{{i.p_title}}</a>
+          </p>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="py-3 border-bottom">
+          <div class="d-flex align-items-center pb-2">
+            <img
+              src="/media/{{i.p_image}}"
+              class="img-xs img-rounded mr-2"
+              alt="thumb"
+            />
+            
+            {% for username in usersData %}
+              <span class="fs-12 text-muted">{{username.u_name}}</span>
+            {% endfor %}
+              
+          </div>
+          <p class="fs-14 m-0 font-weight-medium line-height-sm">
+            <a href="">{{i.p_title}}</a>
+          </p>
+        </div>
+      </div>
+    </div>
+{% endfor %}
+</div> 
+{% comment %} sidebar news  {% endcomment %}
+            </div>
+          </div>
+
+          <div class="world-news">
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="d-flex position-relative  float-left">
+                  <h3 class="section-title">World News</h3>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+
+      {% for i in four_news_post %}
+              <div class="col-lg-3 col-sm-4 col-md-2 grid-margin mb-4 mb-sm-2">
+                <div class="position-relative image-hover">
+                  <img
+                    src="/media/{{i.p_image}}"
+                    class="img-fluid"
+                    alt="world-news"
+                  />
+                  <span class="thumb-title">TRAVEL</span>
+                </div>
+                <h5 class="font-weight-bold mt-3">
+                  <a href="single/{{i.id}}">{{i.p_title}}</a>
+                </h5>
+                <p class="fs-15 font-weight-normal">{{i.p_desc | slice:":100"}}</p>
+                <a href="#" class="font-weight-bold text-dark pt-2"
+                  >Read Article</a
+                >
+              </div>
+      {% endfor %}
+       
+            </div>
+          </div>
+          <div class="editors-news">
+            <div class="row">
+              <div class="col-lg-3">
+                <div class="d-flex position-relative float-left">
+                  <h3 class="section-title">Popular News</h3>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+           <div class="col-lg-6  mb-5 mb-sm-2">
+                <div class="position-relative image-hover">
+                  <img
+                    src="/static/assets/images/dashboard/glob.jpg"
+                    class="img-fluid"
+                    alt="world-news"
+                  />
+                  <span class="thumb-title">NEWS</span>
+                </div>
+                <h1 class="font-weight-600 mt-3">
+                  Melania Trump speaks about courage at State Department
+                </h1>
+                <p class="fs-15 font-weight-normal">
+                  Lorem Ipsum has been the industry's standard dummy text ever
+                  since the 1500s, when an unknown printer took a galley of type
+                  and
+                </p>
+              </div> 
+              <div class="col-lg-6  mb-5 mb-sm-2">
+                <div class="row">
+          {% for i in four_news_post %}
+              <div class="col-sm-6  mb-5 mb-sm-2">
+                <div class="position-relative image-hover">
+                  <img
+                    src="/media/{{i.p_image}}"
+                    class="img-fluid"
+                    alt="world-news"
+                  />
+                  <span class="thumb-title">TRAVEL</span>
+                </div>
+                <h5 class="font-weight-600 mt-3">
+                  <a href="single/{{i.id}}">{{i.p_title}}</a>
+                </h5>
+                <p class="fs-15 font-weight-normal">
+                  {{i.p_desc | slice:":100" | safe}}
+                </p>
+              </div>
+          {% endfor %}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="popular-news">
+            <div class="row">
+              <div class="col-lg-3">
+                <div class="d-flex position-relative float-left">
+                  <h3 class="section-title">Editor choice</h3>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-9">
+                <div class="row">
+                {% for i in four_news_post %}
+                  <div class="col-sm-4  mb-5 mb-sm-2">
+                    <div class="position-relative image-hover">
+                      <img
+                        src="/media/{{i.p_image}}"
+                        class="img-fluid"
+                        alt="world-news"
+                      />
+                      <span class="thumb-title">LIFESTYLE</span>
+                    </div>
+                    <h5 class="font-weight-600 mt-3">
+                      <a href="single/{{i.id}}">{{i.p_title}}</a>
+                    </h5>
+                  </div>
+               {% endfor %}
+                </div>
+              </div>
+              <div class="col-lg-3">
+                <div class="position-relative mb-3">
+                  <img
+                    src="/static/assets/images/dashboard/star-magazine-15.jpg"
+                    class="img-fluid"
+                    alt="world-news"
+                  />
+                  <div class="video-thumb text-muted">
+                    <span><i class="mdi mdi-menu-right"></i></span>LIVE
+                  </div>
+                </div>
+                <div class="row">
+                <div class="col-sm-12">
+                    <div class="d-flex position-relative float-left">
+                      <h3 class="section-title">Latest News</h3>
+                    </div>
+                  </div>
+                {% for i in four_news_post %}
+                  <div class="col-sm-12">
+                    <div class="border-bottom pb-3">
+                      <h5 class="font-weight-600 mt-0 mb-0">
+                        <a href="">{{i.p_title}}</a>
+                      </h5>
+                      <p class="text-color m-0 d-flex align-items-center">
+                        <span class="fs-10 mr-1">{{i.p_date}}</span>
+                        <i class="mdi mdi-bookmark-outline mr-3"></i>
+                        <span class="fs-10 mr-1">{{i.p_comment}}</span>
+                        <i class="mdi mdi-comment-outline"></i>
+                      </p>
+                    </div>
+                  </div>
+                {% endfor %}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- main-panel ends -->
+        <!-- container-scroller ends -->
+{% include 'footer.html' %}

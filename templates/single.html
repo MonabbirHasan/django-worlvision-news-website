@@ -1,0 +1,130 @@
+{% include 'header.html' %}
+          <!-- partial -->
+        </div>
+      </header>
+    </div>
+    <div class="container">
+      <div class="row">
+
+        <div class="col-sm-12">
+          <div class="news-post-wrapper">
+            
+      {% for i in single_news_post %}
+              
+            <img
+              src="/media/{{i.p_image}}"
+              alt="news"
+              style="width:100%;height:auto;border-radius:20px;box-shadow:0px 4px 5px #333;"
+              class="img-fluid mb-4"
+            />
+            <div class="news-post-wrapper-sm ">
+            
+                <div class="row pt-2 pb-2">
+                  <div class="col-md-12 text-center badge badge-primary text-dark" style="font-size:17px;">
+                    {{i.p_date}}
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12 text-center">
+                  <h1 class="text-center mb-4 pb-1" style="text-transform:capitalize;">
+                    {{i.p_title | safe | capfirst}}
+                  </h1>
+                  </div>
+                </div>
+              <p>
+                {{i.p_desc | safe | capfirst}}
+              </p>
+              <p></p>
+              <p class="mb-5">
+                {{i.p_desc | safe | capfirst}}
+              </p>
+        {% endfor %}
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+    {% comment %} user comment section form {% endcomment %}
+    <div class="title text-center pt-5 pb-5">
+        <h1 class="title text-center alert alert-success text-dark">Write Your Comment In This Post </h1>
+      </div>
+    <div class="row">
+      <div class="col-lg-6 offset-3  mb-5 mb-sm-2">
+
+        <form method="post" action="single/{{single_news_post.id}}">
+          {% csrf_token %}
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="name"
+                  name="username"
+                  aria-describedby="name"
+                  placeholder="Name *"
+                  
+                />
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <input
+                  type="email"
+                  name="email"
+                  class="form-control"
+                  id="email"
+                  aria-describedby="email"
+                  placeholder="Email *"
+                />
+              </div>
+            </div>
+          </div>
+
+          {% comment %} <div class="row">
+            <div class="col-sm-12">
+              <div class="form-group">
+                <input
+                  type="text"
+                  name="subject"
+                  class="form-control"
+                  id="subject"
+                  aria-describedby="Subject"
+                  placeholder="Subject"
+                />
+              </div>
+            </div>
+          </div> {% endcomment %}
+
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="form-group">
+                <textarea
+                style="resize:none; height:150px;"
+                  class="form-control textarea"
+                  placeholder="Message"
+                  id="message"
+                  name="Details"
+                ></textarea>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="form-group">
+                <a href="" type="submit" class="btn btn-lg btn-dark font-weight-bold"
+                  >Submit</a>
+              </div>
+            </div>
+          </div>
+        </form>
+
+
+
+      </div>
+    </div>
+    <!-- container-scroller ends -->
+   {% include 'footer.html' %}

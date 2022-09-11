@@ -1,0 +1,101 @@
+{% include 'header.html' %}
+          <!-- partial -->
+        </div>
+      </header>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="text-center">
+              <h1 class="text-center mt-5" style="font-weight:bold;border-bottom:2px solid #21f123;letter-spacing:2px;">
+                
+                {% for i in name_news_post %}
+                  {{i.c_name |upper}}
+                {% endfor %}
+                  
+              </h1>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-6  mb-5 mb-sm-2">
+            <div class="position-relative image-hover">
+              <img
+                src="/static/assets/images/politics/Politics_1.jpg"
+                class="img-fluid"
+                alt="world-news"
+              />
+              <span class="thumb-title">WORLD</span>
+            </div>
+            <h1 class="font-weight-600 mt-3">
+              Melania Trump speaks about courage at State Department
+            </h1>
+            <p class="fs-15 font-weight-normal">
+              Lorem Ipsum has been the industry's standard dummy text ever since
+              the 1500s, when an unknown printer took a galley of type and
+            </p>
+          </div>
+          <div class="col-lg-6  mb-5 mb-sm-2">
+            <div class="row">
+      {% for i in four_news_post %}
+          <div class="col-sm-6  mb-5 mb-sm-2">
+                <div class="position-relative image-hover">
+                  <img
+                    src="/media/{{i.p_image}}"
+                    class="img-fluid"
+                    alt="world-news"
+                  />
+                  <span class="thumb-title">WORLD</span>
+                </div>
+                <h5 class="font-weight-600 mt-3">
+                 <a href="/single/{{i.id}}">{{i.p_title}}<a/>
+                </h5>
+                <p class="fs-15 font-weight-normal">
+                 {{i.p_desc | slice:":100" }}
+                </p>
+              </div>
+              <div class="col-sm-6  mb-5 mb-sm-2">
+                <div class="position-relative image-hover">
+                  <img
+                    src="/media/{{i.p_image}}"
+                    class="img-fluid"
+                    alt="world-news"
+                  />
+                  <span class="thumb-title">WORLD</span>
+                </div>
+                <h5 class="font-weight-600 mt-3">
+                  <a href="/single/{{i.id}}">{{i.p_title}}<a/>
+                </h5>
+                <p class="fs-15 font-weight-normal">
+                  {{i.p_desc | slice:":100" }}
+                </p>
+              </div>              
+       {% endfor %}
+            </div>
+          </div>
+        </div>
+      <div class="row mt-5">
+        <div class="col-sm-12">
+          <h5 class="text-muted font-weight-medium mb-3">Popular News</h5>
+        </div>
+      </div>
+      <div class="row">
+{% for i in all_news_post %}
+    <div class="col-sm-3  mb-5 mb-sm-2">
+      <div class="position-relative image-hover">
+        <img
+          src="/media/{{i.p_image}}"
+          class="img-fluid"
+          alt="world-news"
+        />
+        <span class="thumb-title">WORLD</span>
+      </div>
+      <h5 class="font-weight-600 mt-3">
+        <a href="/single/{{i.id}}">{{i.p_title}}</a>
+      </h5>
+    </div>
+{% endfor %}
+</div>
+      </div>
+    </div>
+    <!-- container-scroller ends -->
+   {% include 'footer.html' %}
